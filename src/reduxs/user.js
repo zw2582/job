@@ -28,14 +28,14 @@ function reviceRegist({name,pwd,type,errorMsg}) {
         }
     }
 }
-
+//action：收到错误
 function reviceError($msg) {
     return {
         type: ERROR,
         errorMsg: $msg
     }
 }
-
+//action:发送注册
 export function sendRegist({name,pwd,repeatpwd,type}) {
     if (!name || !pwd || !type) {
         return reviceError('请输入必输参数')
