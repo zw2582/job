@@ -14,11 +14,15 @@ class AuthRoute extends React.Component {
             if (res.status === 200) {
                 if(res.data.code === 1) {
                     //有登陆信息
+                    this.props.history.push('/boad')
                 } else {
                     //进入登陆页
                     this.props.history.push('/login')
                 }
             }
+        }).catch(err=>{
+            this.props.history.push('/login')
+            console.log(err)
         })
     }
     render() {

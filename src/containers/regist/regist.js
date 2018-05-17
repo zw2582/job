@@ -1,6 +1,7 @@
 import React from 'react';
 import { WingBlank,WhiteSpace,Button, InputItem,Radio} from 'antd-mobile'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { sendRegist } from '../../reduxs/user'
 
@@ -33,7 +34,8 @@ class Regist extends React.Component {
         const RadioItem = Radio.RadioItem
         return (
             <div>
-                {this.props.user.errorMsg && <p>{this.props.user.errorMsg}</p>}
+                {this.props.errorMsg && <p>{this.props.errorMsg}</p>}
+                {this.props.redirect && <Redirect to={this.props.redirect}></Redirect>}
                 <InputItem onChange={(v)=>this.handleChange('name', v)}>用户名</InputItem>
                 <InputItem type="password" onChange={(v)=>this.handleChange('pwd', v)}>密码</InputItem>
                 <InputItem type="password" onChange={(v)=>this.handleChange('repeatpwd', v)}>确认密码</InputItem>
@@ -50,10 +52,6 @@ class Regist extends React.Component {
     }
 }
 
-Regist = connect((state)=>{
-    return {
-        user:state.user
-    }
-}, {sendRegist})(Regist)
+Regist = connect((state)=>state.user, {sendRegist})(Regist)
 
 export default Regist

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore,applyMiddleware } from 'redux'
 import { BrowserRouter,Route,Redirect,Switch } from 'react-router-dom'
 import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 
 import './config'
 import redutor from './redux'
@@ -12,7 +13,7 @@ import Login from './containers/login/login'
 import Regist from './containers/regist/regist'
 import AuthRoute from './containers/auth/AuthRoute'
 
-const store = createStore(redutor, applyMiddleware(thunk))
+const store = createStore(redutor, applyMiddleware(thunk, logger))
 
 function Boad() {
     return <h1>我是boad</h1>
