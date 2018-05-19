@@ -12,6 +12,7 @@ import 'antd-mobile/dist/antd-mobile.css'
 import Login from './containers/login/login'
 import Regist from './containers/regist/regist'
 import AuthRoute from './containers/auth/AuthRoute'
+import Bossinfo from './containers/bossinfo/bossinfo'
 
 const store = createStore(redutor, applyMiddleware(thunk, logger))
 
@@ -23,10 +24,13 @@ ReactDom.render(<Provider store={store}>
     <BrowserRouter>
         <div>
             <AuthRoute />
+            <Switch>
                 {/* <Route path="/" component={AuthRoute} /> */}
                 <Route path="/login" component={Login} />
                 <Route path="/regist" component={Regist} />
-            <Route path="/boad" component={Boad} />
+                <Route path="/boad" component={Boad} />
+                <Route path="/bossinfo" component={Bossinfo} />
+            </Switch>
         </div>
     </BrowserRouter>
 </Provider>, document.getElementById('root'))

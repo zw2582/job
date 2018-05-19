@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button,InputItem,WhiteSpace,WingBlank } from 'antd-mobile'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect,Link } from 'react-router-dom'
 
 import Logo from '../../components/logo/logo'
 import {login} from '../../reduxs/user'
@@ -40,6 +40,8 @@ class Login extends React.Component {
                     <InputItem type="password" onChange={(v)=>this.handleChange('pwd', v)}>密码</InputItem>
                     <WhiteSpace />
                     <Button onClick={this.handleLogin} type="primary">登陆</Button>
+                    <WhiteSpace/>
+                    <Button onClick={()=>{this.props.history.push('/regist')}} type="primary">注册</Button>
                 </WingBlank>
             </div>
         )

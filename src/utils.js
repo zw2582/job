@@ -2,13 +2,13 @@
 export function getLoginRedictUrl(type, headimg) {
     if (type == 'niu') {
         if(!headimg) {
-            return '/niuinfo/head'
+            return '/niuinfo'
         } 
-        return '/niuinfo'
+        return '/boad'
     } else {
         if (!headimg) {
-            return '/bossinfo/head'
+            return '/bossinfo'
         }
-        return '/bossinfo'
+        return '/boad'
     }
 }
