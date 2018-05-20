@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 import { getLoginRedictUrl } from '../../utils'
 
+@withRouter
 class AuthRoute extends React.Component {
 
     componentDidMount() {
@@ -34,7 +35,5 @@ class AuthRoute extends React.Component {
         return null
     }
 }
-
-AuthRoute = withRouter(AuthRoute)
 
 export default AuthRoute

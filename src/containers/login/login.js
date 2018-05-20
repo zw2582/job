@@ -6,6 +6,7 @@ import { Redirect,Link } from 'react-router-dom'
 import Logo from '../../components/logo/logo'
 import {login} from '../../reduxs/user'
 
+@connect(state=>state.user, {login})
 class Login extends React.Component {
 
     state = {
@@ -47,7 +48,5 @@ class Login extends React.Component {
         )
     }
 }
-
-Login = connect(state=>state.user, {login})(Login)
 
 export default Login

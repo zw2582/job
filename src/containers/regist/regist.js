@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 import { sendRegist } from '../../reduxs/user'
 
+@connect((state)=>state.user, {sendRegist})
 class Regist extends React.Component {
 
     constructor(props) {
@@ -51,7 +52,5 @@ class Regist extends React.Component {
         )
     }
 }
-
-Regist = connect((state)=>state.user, {sendRegist})(Regist)
 
 export default Regist

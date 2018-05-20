@@ -8,7 +8,7 @@ import logger from 'redux-logger'
 
 import './config'
 import redutor from './redux'
-import 'antd-mobile/dist/antd-mobile.css'
+// import 'antd-mobile/dist/antd-mobile.css'
 import Login from './containers/login/login'
 import Regist from './containers/regist/regist'
 import AuthRoute from './containers/auth/AuthRoute'
