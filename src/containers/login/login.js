@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button,InputItem,WhiteSpace,WingBlank } from 'antd-mobile'
+import { Button,InputItem,WhiteSpace,WingBlank,Icon } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { Redirect,Link } from 'react-router-dom'
 
 import Logo from '../../components/logo/logo'
 import {login} from '../../reduxs/user'
+import Triangle from '../../iconfont/comments.svg';
 
 @connect(state=>state.user, {login})
 class Login extends React.Component {
@@ -33,7 +34,11 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                <Logo/>
+            <Icon type="check" size="md" color="red" />
+             <Icon type="comments" size="md" color="red" />
+             <Icon color="red" type={Triangle} />
+             <Triangle color="red" />
+                {/* <Logo/> */}
                 {this.props.errorMsg && <p>{this.props.errorMsg}</p>}
                 {this.props.redirect && <Redirect to={this.props.redirect}></Redirect>}
                 <WingBlank>
