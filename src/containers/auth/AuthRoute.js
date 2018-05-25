@@ -1,10 +1,12 @@
 import React from 'react';
-import axios from 'axios'
-import { withRouter } from 'react-router-dom'
+import { withRouter,Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import { getLoginRedictUrl } from '../../utils'
+import { getUser } from '../../reduxs/user'
+
 
 @withRouter
+@connect(state=>state.user, {getUser})
 class AuthRoute extends React.Component {
 
     componentDidMount() {
@@ -13,26 +15,14 @@ class AuthRoute extends React.Component {
         if(publicList.indexOf(pathname) > -1) {
             return null
         }
-        axios.get('/user/info').then((res)=>{
-            if (res.status === 200) {
-                if(res.data.code === 1) {
-                    //有登陆信息
-                    let user = res.data.data
-                    
-                    let url = getLoginRedictUrl(user.type, user.headimg)
-                    this.props.history.push(url)
-                } else {
-                    //进入登陆页
-                    this.props.history.push('/login')
-                }
-            }
-        }).catch(err=>{
-            this.props.history.push('/login')
-            console.log(err)
-        })
+        this.props.getUser()
     }
     render() {
-        return null
+        if (this.props.redirect && this.props.redirect != this.props.location.pathname) {
+            return <Redirect to={this.props.redirect} />
+        } else {
+            return null
+        }
     }
 }
 

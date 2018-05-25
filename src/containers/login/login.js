@@ -1,18 +1,18 @@
 import React from 'react';
-import { Button,InputItem,WhiteSpace,WingBlank,Icon } from 'antd-mobile'
+import { Button,InputItem,WhiteSpace,WingBlank,Icon,TabBar } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { Redirect,Link } from 'react-router-dom'
 
 import Logo from '../../components/logo/logo'
 import {login} from '../../reduxs/user'
-import Triangle from '../../iconfont/comments.svg';
+require('../../iconfont/comments.svg')
 
 @connect(state=>state.user, {login})
 class Login extends React.Component {
 
     state = {
         name:'',
-        pwd:''
+        password:''
     }
 
     constructor(props) {
@@ -34,21 +34,35 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-            <Icon type="check" size="md" color="red" />
-             <Icon type="comments" size="md" color="red" />
-             <Icon color="red" type={Triangle} />
-             <Triangle color="red" />
                 {/* <Logo/> */}
-                {this.props.errorMsg && <p>{this.props.errorMsg}</p>}
+                {this.props.msg && <p>{this.props.msg}</p>}
                 {this.props.redirect && <Redirect to={this.props.redirect}></Redirect>}
                 <WingBlank>
                     <InputItem onChange={(v)=>this.handleChange('name', v)}>用户名</InputItem>
-                    <InputItem type="password" onChange={(v)=>this.handleChange('pwd', v)}>密码</InputItem>
+                    <InputItem type="password" onChange={(v)=>this.handleChange('password', v)}>密码</InputItem>
                     <WhiteSpace />
                     <Button onClick={this.handleLogin} type="primary">登陆</Button>
                     <WhiteSpace/>
                     <Button onClick={()=>{this.props.history.push('/regist')}} type="primary">注册</Button>
                 </WingBlank>
+                {/* <TabBar>
+                    <TabBar.Item 
+                        title="你好"
+                        selected={true}
+                        icon={<Icon type="comments" size="md" />}
+                        selectedIcon={<Icon type="comments" size="md" color="green" />}
+                    />
+                    <TabBar.Item 
+                        title="你好"
+                        icon={<Icon type="comments" size="md" />}
+                        selectedIcon={<Icon type="comments" size="md" color="green" />}
+                    />
+                    <TabBar.Item 
+                        title="你好"
+                        icon={<Icon type="comments" size="md" />}
+                        selectedIcon={<Icon type="comments" size="md" color="green" />}
+                    />
+                </TabBar> */}
             </div>
         )
     }

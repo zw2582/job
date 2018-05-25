@@ -13,6 +13,7 @@ import Login from './containers/login/login'
 import Regist from './containers/regist/regist'
 import AuthRoute from './containers/auth/AuthRoute'
 import Bossinfo from './containers/bossinfo/bossinfo'
+import Genius from './containers/genius/Genius';
 
 const store = createStore(redutor, applyMiddleware(thunk, logger))
 
@@ -30,6 +31,7 @@ ReactDom.render(<Provider store={store}>
                 <Route path="/regist" component={Regist} />
                 <Route path="/boad" component={Boad} />
                 <Route path="/bossinfo" component={Bossinfo} />
+                <Route path="/niuinfo" component={Genius} />
             </Switch>
         </div>
     </BrowserRouter>

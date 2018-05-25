@@ -1,12 +1,12 @@
 //获取登陆成功之后的跳转地址
-export function getLoginRedictUrl(type, headimg) {
-    if (type == 'niu') {
-        if(!headimg) {
+export function getLoginRedictUrl(type, avatar) {
+    if (type == 1) {
+        if(!avatar) {
             return '/niuinfo'
         } 
         return '/boad'
     } else {
-        if (!headimg) {
+        if (!avatar) {
             return '/bossinfo'
         }
         return '/boad'

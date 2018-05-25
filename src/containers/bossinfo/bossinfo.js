@@ -1,7 +1,12 @@
 import React from 'react';
 
-import { NavBar,WhiteSpace,InputItem,TextareaItem,WingBlank, Button } from 'antd-mobile'
+import { NavBar,WhiteSpace,InputItem,TextareaItem,WingBlank, Button,List } from 'antd-mobile'
+import UserAvatar from '../../components/user-avatar/user-avatar';
+import { connect } from 'react-redux'
+import { saveBoss } from '../../reduxs/user'
+import { Redirect } from 'react-router-dom'
 
+@connect(state=>state.user, {saveBoss})
 class Bossinfo extends React.Component {
 
     handleChange=(name, value)=>{
@@ -9,15 +14,34 @@ class Bossinfo extends React.Component {
     }
 
     handleSave=()=>{
-        console.log(this.state)
+        this.props.saveBoss(this.state)
+    }
+
+    avatarClick=(obj,index)=>{
+        this.setState({
+            avatar:obj
+        })
+    }
+
+    state={
+        avatar:''
     }
 
     render() {
         return (
             <div>
                 <NavBar mode="dark">完善boss信息</NavBar>
-                <WhiteSpace />
+
+                {this.props.msg && <p>{this.props.msg}</p>}
+                {(this.props.redirect && this.props.location.pathname != this.props.redirect) && <Redirect to={this.props.redirect} />}
+
+                <List
+                    renderHeader={<span>请选择头像:{this.state.avatar}</span>}
+                >
+                <UserAvatar clickHandler={this.avatarClick} />
+                </List>
                 
+                <WhiteSpace />
                 <InputItem
                 onChange={(v)=>this.handleChange('company', v)}
                 >公司</InputItem>
