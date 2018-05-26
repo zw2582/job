@@ -45,24 +45,6 @@ class Login extends React.Component {
                     <WhiteSpace/>
                     <Button onClick={()=>{this.props.history.push('/regist')}} type="primary">注册</Button>
                 </WingBlank>
-                {/* <TabBar>
-                    <TabBar.Item 
-                        title="你好"
-                        selected={true}
-                        icon={<Icon type="comments" size="md" />}
-                        selectedIcon={<Icon type="comments" size="md" color="green" />}
-                    />
-                    <TabBar.Item 
-                        title="你好"
-                        icon={<Icon type="comments" size="md" />}
-                        selectedIcon={<Icon type="comments" size="md" color="green" />}
-                    />
-                    <TabBar.Item 
-                        title="你好"
-                        icon={<Icon type="comments" size="md" />}
-                        selectedIcon={<Icon type="comments" size="md" color="green" />}
-                    />
-                </TabBar> */}
             </div>
         )
     }
