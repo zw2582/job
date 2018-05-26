@@ -4,11 +4,10 @@ export function getLoginRedictUrl(type, avatar) {
         if(!avatar) {
             return '/niuinfo'
         } 
-        return '/boad'
     } else {
         if (!avatar) {
             return '/bossinfo'
         }
-        return '/boad'
     }
+    return '/'
 }

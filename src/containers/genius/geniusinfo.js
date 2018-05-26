@@ -6,7 +6,7 @@ import { saveGenius } from '../../reduxs/user'
 import { Redirect } from 'react-router-dom'
 
 @connect(state=>state.user, {saveGenius})
-class Genius extends React.Component {
+class GeniusInfo extends React.Component {
 
     avatarClick=($obj, $index)=>{
         this.setState({
@@ -61,4 +61,4 @@ class Genius extends React.Component {
     }
 }
 
-export default Genius
+export default GeniusInfo

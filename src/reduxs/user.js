@@ -3,6 +3,7 @@ import { getLoginRedictUrl } from '../utils'
 
 const ERROR = 'ERROR'
 const AUTH = 'AUTH'
+const LOGOUT = 'LOGOUT'
 
 const init = {
     name:'',
@@ -18,13 +19,15 @@ export function user(state=init, action) {
             return {...state, ...action.reload}
         case ERROR:
             return {...state, msg:action.msg}
+        case LOGOUT:
+            return {...init, redirect:'/login'}
         default:
             return state
     }
 }
 
 //action:登陆成功
-function authSucc(data, redirect) {
+export function authSucc(data, redirect) {
     return {
         type: AUTH,
         reload:{
@@ -80,6 +83,12 @@ export function login({name, password}) {
     }
 }
 
+export function logOut() {
+    return {
+        type: LOGOUT
+    }
+}
+
 export function saveBoss({avatar,position,claim}) {
     return dispatch=>{
         axios.post('/user/saveBoss', {avatar, position, claim}).then(res=>{
@@ -112,11 +121,9 @@ export function getUser() {
             if(res.status == 200) {
                 if (res.data.code == 1) {
                     //logined
-                    let {name,avatar,type} = res.data.data
-                    dispatch(authSucc({avatar, name, type}, getLoginRedictUrl(type, avatar)))
-                } else {
-                    dispatch({}, '/login')
-                }
+                    let {id,name,avatar,type} = res.data.data
+                    dispatch(authSucc({id,avatar, name, type}))
+                } 
             } else {
                 dispatch(error('服务器错误'))
             }

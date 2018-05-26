@@ -36,7 +36,7 @@ class Login extends React.Component {
             <div>
                 {/* <Logo/> */}
                 {this.props.msg && <p>{this.props.msg}</p>}
-                {this.props.redirect && <Redirect to={this.props.redirect}></Redirect>}
+                {(this.props.redirect && this.props.location.pathname != this.props.redirect) && <Redirect to={this.props.redirect} />}
                 <WingBlank>
                     <InputItem onChange={(v)=>this.handleChange('name', v)}>用户名</InputItem>
                     <InputItem type="password" onChange={(v)=>this.handleChange('password', v)}>密码</InputItem>
