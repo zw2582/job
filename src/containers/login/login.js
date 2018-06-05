@@ -5,7 +5,6 @@ import { Redirect,Link } from 'react-router-dom'
 
 import Logo from '../../components/logo/logo'
 import {login} from '../../reduxs/user'
-require('../../iconfont/comments.svg')
 
 @connect(state=>state.user, {login})
 class Login extends React.Component {

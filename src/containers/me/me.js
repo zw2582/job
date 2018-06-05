@@ -1,5 +1,5 @@
 import React from 'react';
-import { WhiteSpace,List,Button,Modal } from 'antd-mobile'
+import { WhiteSpace,List,Button,Modal,Result } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import browserCookie from 'browser-cookies'
@@ -23,6 +23,14 @@ class Me extends React.Component {
         return (
             <div>
                 {(this.props.redirect == '/login') && <Redirect to={this.props.redirect} />}
+                <Result 
+                title="liubi"
+                img={<img src={require('./img/1.png')} height='100%' />}>
+                </Result>
+                <WhiteSpace/>
+                <List>
+                    <List.Item>简历</List.Item>
+                </List>
                 <WhiteSpace/>
                 <List>
                     <List.Item onClick={this.handleLogout}>退出</List.Item>
